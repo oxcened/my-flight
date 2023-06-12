@@ -15,7 +15,7 @@ $query = $db->prepare(
     b.code_departure AS second_departure,
     b.code_arrival AS second_arrival,
     b.price AS second_price,
-    a.price + COALESCE(b.price, 0) as total_price
+    a.price + COALESCE(b.price, 0) AS total_price
     FROM flight AS a LEFT JOIN flight AS b ON a.code_arrival = b.code_departure
     WHERE (a.code_departure = ? AND a.code_arrival = ?) OR (a.code_departure = ? AND b.code_arrival = ?)
     ORDER BY total_price LIMIT 1
