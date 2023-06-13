@@ -1,8 +1,14 @@
 <?php
 
-$db = require "../db.php";
+$db = require_once "../utils/db.php";
+require_once "../utils/send.php";
 
 $result = $db->query("SELECT id, name, code FROM airport");
+
+if (!$result) {
+    send(500, "Could not get airports");
+    $db->close();
+}
 
 $rows = array();
 
@@ -10,6 +16,6 @@ while($row = $result->fetch_assoc()) {
     $rows[] = $row;
 }
 
-echo json_encode(["status" => 200, "message" => "Success", "data" => $rows]);
+send(200, "Success", $rows);
 
 $db->close();
