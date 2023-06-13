@@ -1,21 +1,14 @@
 <?php
 
-$db = require_once "../utils/db.php";
-require_once "../utils/send.php";
+$controller = require_once "controller.php";
 
-$result = $db->query("SELECT id, name, code FROM airport");
+$method = $_SERVER["REQUEST_METHOD"];
 
-if (!$result) {
-    send(500, "Could not get airports");
-    $db->close();
+switch ($method) {
+    case "GET":
+        $controller->get_airports();
+        break;
+    default:
+        $controller->method_not_allowed();
+        break;
 }
-
-$rows = array();
-
-while($row = $result->fetch_assoc()) {
-    $rows[] = $row;
-}
-
-send(200, "Success", $rows);
-
-$db->close();
