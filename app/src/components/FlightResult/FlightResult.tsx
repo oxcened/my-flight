@@ -56,9 +56,9 @@ export default function FlightResult({
 
           <FlightHeader>2️⃣ 2nd Flight</FlightHeader>
           <FlightInfo
-            departure={flights.second_departure}
-            arrival={flights.second_arrival}
-            price={flights.second_price}
+            departure={flights.second_departure!}
+            arrival={flights.second_arrival!}
+            price={flights.second_price!}
           />
 
           <p className="mt-8 text-sm bg-orange-500/10 text-orange-950 rounded-md p-2 font-medium">

@@ -13,13 +13,13 @@ const directFlight: Flights = {
   total_price: 100,
 };
 
-const stopoverFlight: Flights = {
+const stopoverFlight = {
   ...directFlight,
   second_departure: 'MXP',
   second_arrival: 'BCN',
   second_price: 80,
   total_price: 180,
-};
+} satisfies Flights;
 
 // These are integration tests
 
