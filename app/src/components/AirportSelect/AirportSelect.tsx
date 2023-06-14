@@ -9,12 +9,11 @@ export type AirportSelectProps = {
   'children' | 'value' | 'disabled' | 'aria-label' | 'onChange'
 >;
 
-export default function AirportSelect(
-  {
-    airports,
-    placeholder,
-    ...rest
-  }: AirportSelectProps) {
+export default function AirportSelect({
+  airports,
+  placeholder,
+  ...rest
+}: AirportSelectProps) {
   return (
     <select
       required

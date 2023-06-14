@@ -10,7 +10,7 @@ const directFlight: Flights = {
   second_departure: null,
   second_arrival: null,
   second_price: null,
-  total_price: 100
+  total_price: 100,
 };
 
 const stopoverFlight: Flights = {
@@ -18,19 +18,14 @@ const stopoverFlight: Flights = {
   second_departure: 'MXP',
   second_arrival: 'BCN',
   second_price: 80,
-  total_price: 180
+  total_price: 180,
 };
 
 // These are integration tests
 
 describe(FlightResult.name, () => {
   it('Should render loading state', () => {
-    render(
-      <FlightResult
-        isLoading
-        flights={directFlight}
-      />
-    );
+    render(<FlightResult isLoading flights={directFlight} />);
 
     expect(screen.getByText('Loading, please wait...')).toBeInTheDocument();
   });
@@ -48,26 +43,24 @@ describe(FlightResult.name, () => {
   });
 
   it('[direct] Should render flight price and total price', () => {
-    render(
-      <FlightResult
-        flights={directFlight}
-        isLoading={false}
-      />
-    );
+    render(<FlightResult flights={directFlight} isLoading={false} />);
 
-    expect(screen.getAllByText(priceFormatter.format(directFlight.total_price))).toHaveLength(2);
+    expect(
+      screen.getAllByText(priceFormatter.format(directFlight.total_price))
+    ).toHaveLength(2);
   });
 
   it('[stopover] Should render flight prices and total price', () => {
-    render(
-      <FlightResult
-        flights={stopoverFlight}
-        isLoading={false}
-      />
-    );
+    render(<FlightResult flights={stopoverFlight} isLoading={false} />);
 
-    expect(screen.getByText(priceFormatter.format(stopoverFlight.first_price))).toBeInTheDocument();
-    expect(screen.getByText(priceFormatter.format(stopoverFlight.second_price))).toBeInTheDocument();
-    expect(screen.getByText(priceFormatter.format(stopoverFlight.total_price))).toBeInTheDocument();
+    expect(
+      screen.getByText(priceFormatter.format(stopoverFlight.first_price))
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(priceFormatter.format(stopoverFlight.second_price))
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(priceFormatter.format(stopoverFlight.total_price))
+    ).toBeInTheDocument();
   });
 });

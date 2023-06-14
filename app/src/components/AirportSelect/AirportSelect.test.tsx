@@ -35,21 +35,25 @@ describe(AirportSelect.name, () => {
   it('Should change value on option click', async () => {
     render(<AirportSelect airports={airports} aria-label="Select Airports" />);
 
-    await userEvent.selectOptions(
-      screen.getByLabelText('Select Airports'),
-      ['Fiumicino Airport (FCO)']
-    );
+    await userEvent.selectOptions(screen.getByLabelText('Select Airports'), [
+      'Fiumicino Airport (FCO)',
+    ]);
 
     expect(screen.getByLabelText('Select Airports')).toHaveValue('FCO');
   });
 
   it('Should not change value on option click when disabled', async () => {
-    render(<AirportSelect airports={airports} aria-label="Select Airports" disabled />);
-
-    await userEvent.selectOptions(
-      screen.getByLabelText('Select Airports'),
-      ['Fiumicino Airport (FCO)']
+    render(
+      <AirportSelect
+        airports={airports}
+        aria-label="Select Airports"
+        disabled
+      />
     );
+
+    await userEvent.selectOptions(screen.getByLabelText('Select Airports'), [
+      'Fiumicino Airport (FCO)',
+    ]);
 
     expect(screen.getByLabelText('Select Airports')).toHaveValue('');
   });
