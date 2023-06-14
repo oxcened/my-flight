@@ -1,8 +1,7 @@
 {
-  "name": "app",
+  "name": "my-flight",
   "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "version": "1.0.0",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -10,6 +9,15 @@
     "preview": "vite preview",
     "test": "jest"
   },
+  "author": {
+    "name": "Alen Ajam",
+    "email": "hello@alenajam.dev",
+    "url": "https://alenajam.dev"
+  },
+  "homepage": "https://github.com/oxcened/my-flight",
+  "repository": "https://github.com/oxcened/my-flight",
+  "bugs": "https://github.com/oxcened/my-flight/issues",
+  "type": "module",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
