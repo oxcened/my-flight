@@ -3,8 +3,8 @@ import { Airport, useAirports } from '../../hooks/useAirports.ts';
 import AirportSelect from '../AirportSelect/AirportSelect.tsx';
 
 export type FlightFormProps = {
-  isLoading: boolean;
-  onSubmit: (departure: string, arrival: string) => void;
+  isLoading?: boolean;
+  onSubmit?: (departure: string, arrival: string) => void;
 };
 
 export default function FlightForm({ isLoading, onSubmit }: FlightFormProps) {
@@ -16,7 +16,7 @@ export default function FlightForm({ isLoading, onSubmit }: FlightFormProps) {
     e.preventDefault();
 
     if (airports.length && departure && arrival) {
-      onSubmit(departure, arrival);
+      onSubmit?.(departure, arrival);
     }
   };
 
@@ -35,15 +35,15 @@ export default function FlightForm({ isLoading, onSubmit }: FlightFormProps) {
   }
 
   return (
-    <form className="mt-12" onSubmit={handleSubmit}>
+    <form aria-label="Flight Search" className="mt-12" onSubmit={handleSubmit}>
       <div className="grid sm:grid-cols-[minmax(0,1fr),max-content,minmax(0,1fr)] gap-2">
         <AirportSelect
           airports={airports}
           value={departure}
+          placeholder="Depart from..."
+          aria-label="Select Departure"
           onChange={handleDepartureChange}
-        >
-          Depart from...
-        </AirportSelect>
+        />
 
         <button
           type="button"
@@ -60,10 +60,10 @@ export default function FlightForm({ isLoading, onSubmit }: FlightFormProps) {
           airports={airports.filter((a) => a.code !== departure)}
           value={arrival}
           disabled={!departure}
+          placeholder="Arrive to..."
+          aria-label="Select Arrival"
           onChange={(e) => setArrival(e.target.value)}
-        >
-          Arrive to...
-        </AirportSelect>
+        />
       </div>
 
       <button

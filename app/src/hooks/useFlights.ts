@@ -4,9 +4,9 @@ export type Flights = {
   first_departure: string;
   first_arrival: string;
   first_price: number;
-  second_departure: string;
-  second_arrival: string;
-  second_price: number;
+  second_departure: string | null;
+  second_arrival: string | null;
+  second_price: number | null;
   total_price: number;
 };
 

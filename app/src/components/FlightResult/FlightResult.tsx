@@ -17,7 +17,7 @@ export type FlightResultProps = {
   error?: string;
 };
 
-export default function FlightResultProps({
+export default function FlightResult({
   flights,
   isLoading,
   error,
