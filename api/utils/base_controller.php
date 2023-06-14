@@ -9,7 +9,7 @@ class BaseController
         $this->db = require_once "../utils/db.php";
 
         if ($this->db->connect_error) {
-            send(500, "Could not connect to database");
+            $this->send(500, "Could not connect to database");
         }
     }
 
