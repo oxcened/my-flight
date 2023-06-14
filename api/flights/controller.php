@@ -16,7 +16,9 @@ class FlightsController extends BaseController
             );
         }
 
-        # Query for either the cheapest direct flight or the cheapest two-flight combination
+        # Query for either direct flights or the two-flight combinations
+        # We want to know the most convenient flight so prioritize direct flights
+        # And second priority is lowest price
         $query = $this->db->prepare(
             "
             SELECT
@@ -30,7 +32,8 @@ class FlightsController extends BaseController
             FROM flight AS a LEFT JOIN flight AS b
             ON a.code_arrival = b.code_departure AND a.code_arrival != ?
             WHERE (a.code_departure = ? AND a.code_arrival = ?) OR (a.code_departure = ? AND b.code_arrival = ?)
-            ORDER BY total_price LIMIT 1
+            ORDER BY b.code_departure IS NULL DESC, total_price
+            LIMIT 1
             "
         );
 

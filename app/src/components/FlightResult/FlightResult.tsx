@@ -46,7 +46,7 @@ export default function FlightResult({
     <div className="mt-10 border p-4 rounded-md">
       <p className="text-xl">Pack your bags 🧳</p>
       <p className="font-light mt-1 mb-8">
-        Here is the cheapest flight we were able to find
+        Here is the best flight we were able to find
       </p>
 
       {hasStopover ? (
